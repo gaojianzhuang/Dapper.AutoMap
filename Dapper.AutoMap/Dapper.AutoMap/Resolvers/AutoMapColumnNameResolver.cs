@@ -10,13 +10,24 @@ namespace Dapper.AutoMap.Resolvers
 {
     public class AutoMapColumnNameResolver : IColumnNameResolver
     {
-        private static readonly IColumnNameResolver DefaultResolver = new DefaultColumnNameResolver();
-        private static readonly IMappingStrategy MappingStrategy = MappingStrategyManager.EntityPropertyNameMappingStrategy.Value;
+        private static readonly IColumnNameResolver _defaultResolver = new DefaultColumnNameResolver();
+        private static readonly IMappingStrategy _mappingStrategy = MappingStrategyManager.EntityPropertyNameMappingStrategy.Value;
+
+        private static string EntityPrefix { get; set; }
+
+        public AutoMapColumnNameResolver()
+        { 
+        }
+
+        public AutoMapColumnNameResolver(string entityPrefix)
+        {
+            EntityPrefix = entityPrefix;
+        }
 
         public string ResolveColumnName(PropertyInfo propertyInfo)
         {
-            var columnName = MappingStrategy.To(propertyInfo.Name);
-            return columnName ?? DefaultResolver.ResolveColumnName(propertyInfo);
+            var columnName = _mappingStrategy.To(propertyInfo.Name);
+            return columnName ?? _defaultResolver.ResolveColumnName(propertyInfo);
         }
     }
 }

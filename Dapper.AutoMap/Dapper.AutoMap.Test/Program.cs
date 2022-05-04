@@ -16,10 +16,10 @@ Console.WriteLine("Hello, World!");
 FluentMapper.Initialize(config =>
 {
     //config.AddMap(new CategoryMap());
-    //config.AddConvention<CommonEntityConvention>()
+    //config.AddConvention<DefaultEntityConvention>()
     //      .ForEntity<Category>();
 
-    config.AddConvention<EntityColumnNameConvention>()
+    config.AddConvention<DefaultEntityConvention>()
           .ForEntitiesInAssembly(typeof(Category).Assembly, "Dapper.AutoMap.Test.Models");
 });
 
@@ -34,4 +34,5 @@ var columnResolver = new AutoMapColumnNameResolver();
 DommelMapper.SetColumnNameResolver(columnResolver);
 DommelMapper.SetTableNameResolver(tableResolver);
 var category = await connection.GetAsync<Category>(1);
+var selectCategory = await connection.SelectAsync<Category>(c => c.CategoryId == 1);
 Console.WriteLine(category?.CategoryId);

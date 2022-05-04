@@ -10,8 +10,8 @@ namespace Dapper.AutoMap.Resolvers
 {
     public class AutoMapTableNameResolver : ITableNameResolver
     {
-        private static readonly ITableNameResolver DefaultResolver = new DefaultTableNameResolver();
-        private static readonly IMappingStrategy MappingStrategy = MappingStrategyManager.EntityTableNameMappingStrategy.Value;
+        private static readonly ITableNameResolver _defaultResolver = new DefaultTableNameResolver();
+        private static readonly IMappingStrategy _mappingStrategy = MappingStrategyManager.EntityTableNameMappingStrategy.Value;
 
         private static string EntityPrefix { get; set; }
 
@@ -27,8 +27,8 @@ namespace Dapper.AutoMap.Resolvers
         public string ResolveTableName(Type type)
         {
             MappingStrategyManager.EntityPrefix = EntityPrefix ?? "Dxp";
-            var tableName = MappingStrategy.To(type.Name);
-            return tableName ?? DefaultResolver.ResolveTableName(type);
+            var tableName = _mappingStrategy.To(type.Name);
+            return tableName ?? _defaultResolver.ResolveTableName(type);
         }
     }
 }

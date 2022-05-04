@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Attributes\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Mapping\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Dapper.FluentMap" Version="2.0.0" />
+    <PackageReference Include="Dommel" Version="3.0.0" />
   </ItemGroup>
 
 </Project>

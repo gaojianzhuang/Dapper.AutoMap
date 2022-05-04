@@ -3,3 +3,6 @@
 ################################################################################
 
 /Dapper.AutoMap/Dapper.AutoMap/obj
+/Dapper.AutoMap/Dapper.AutoMap.Test/bin/Debug/net6.0
+/Dapper.AutoMap/Dapper.AutoMap.Test/obj
+/Dapper.AutoMap/Dapper.AutoMap/bin/Debug/net6.0

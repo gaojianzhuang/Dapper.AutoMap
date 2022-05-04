@@ -5,7 +5,7 @@ namespace Dapper.AutoMap;
 
 public class CompositeMappingStrategy : IMappingStrategy
 {
-    public ICollection<IMappingStrategy> Strategies { get; set; }
+    public ICollection<IMappingStrategy> Strategies { get; set; } = new List<IMappingStrategy>();
 
     public string To(string from)
     {
